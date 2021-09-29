@@ -64,10 +64,10 @@ class SiameseNetworkDataset(Dataset):
 
 
 
-def pre_preocessor(root_dir, batchsize):
+def pre_preocessor(root_dir, trainbatchsize, testbatchsize):
 
-    train_data = datasets.ImageFolder(root_dir+'Train')
-    test_data = datasets.ImageFolder(root_dir+'Test')
+    train_data = datasets.ImageFolder(root_dir + '\Train')
+    test_data = datasets.ImageFolder(root_dir + '\Test')
     # print(folder_dataset.imgs) 
     # o/p will be tuple with each image path and the folder index
     # [('..\\..\\..\\Dataset\\AT&T_Face\\Train\\s1\\1.pgm', 0), ('..\\..\\..\\Dataset\\AT&T_Face\\Train\\s1\\10.pgm', 0)....]  
@@ -87,9 +87,9 @@ def pre_preocessor(root_dir, batchsize):
                                             ,should_invert=False)
 
     # create the dataloaders
-    train_loader = torch.utils.data.DataLoader(siamese_train_dataset, batch_size=batchsize,
+    train_loader = torch.utils.data.DataLoader(siamese_train_dataset, batch_size=trainbatchsize,
                                             shuffle=True)
-    test_loader = torch.utils.data.DataLoader(siamese_test_dataset, batch_size=batchsize,
+    test_loader = torch.utils.data.DataLoader(siamese_test_dataset, batch_size=testbatchsize,
                                             shuffle=False)
 
     return train_loader, test_loader
