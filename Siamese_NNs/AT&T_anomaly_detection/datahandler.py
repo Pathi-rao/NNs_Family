@@ -92,4 +92,4 @@ def pre_preocessor(root_dir, trainbatchsize, testbatchsize):
     test_loader = torch.utils.data.DataLoader(siamese_test_dataset, batch_size=testbatchsize,
                                             shuffle=False)
 
-    return train_loader, test_loader
+    return siamese_train_dataset, train_loader, test_loader
